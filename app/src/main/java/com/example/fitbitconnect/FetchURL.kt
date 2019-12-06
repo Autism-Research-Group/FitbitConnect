@@ -2,7 +2,9 @@ package com.example.fitbitconnect
 
 import android.os.AsyncTask
 import android.util.Log
+import java.io.BufferedInputStream
 import java.io.BufferedReader
+import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
@@ -14,6 +16,7 @@ class FetchURL() : AsyncTask<String, Void, String>() {
         val connection = makeURLCall(path[0])
         val response = responseCode(connection)
         return response
+
     }
 
     override fun onPostExecute(result: String?) {
@@ -27,7 +30,6 @@ class FetchURL() : AsyncTask<String, Void, String>() {
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "GET"
         connection.setRequestProperty("User-agent", "Mozilla/5.0")
-
         return connection
     }
 
@@ -40,10 +42,12 @@ class FetchURL() : AsyncTask<String, Void, String>() {
         val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connection.inputStream))
 
         var response: String = ""
-        var line: String = bufferedReader.readLine()
+        var line: String? = bufferedReader.readLine()
+        Log.i("URL_API", line)
 
         while(line != null) {
             response += (line)
+            line = bufferedReader.readLine()
         }
 
         return response

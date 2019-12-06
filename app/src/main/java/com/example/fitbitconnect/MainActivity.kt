@@ -17,9 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i("URL_API", "In main")
         btn_api.setOnClickListener {
             Toast.makeText(this,"Making API call", Toast.LENGTH_SHORT).show()
-            FetchURL().execute("https://www.google.com/search?q=mkyong")
+            FetchURL().execute("http://10.0.2.2:3000/android/profile")
         }
     }
 
