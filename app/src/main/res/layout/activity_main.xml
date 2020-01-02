@@ -5,7 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Fitbit Monitor"
+        android:textSize="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,19 +23,83 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_api"
-            android:textSize="24dp"
+            android:textSize="16dp"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
-            android:text="Make API Call" />
+            android:paddingBottom="5dp"
+            android:text="Subscribe a User" />
 
         <Button
             android:id="@+id/btn_api"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="Add" />
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="View subscribed Users" />
+
+        <Button
+            android:id="@+id/btn_show_all_users"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Fetch Single Heart Rate" />
+
+        <Button
+            android:id="@+id/btn_fetch_single_heartRate"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fetch Single" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Fetch All Heart Rates" />
+
+        <Button
+            android:id="@+id/btn_fetch_all_heartRate"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fetch All" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="View Stored Data" />
+
+        <Button
+            android:id="@+id/btn_view_db"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View" />
     </LinearLayout>
 </RelativeLayout>
