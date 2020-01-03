@@ -7,68 +7,39 @@ import com.example.fitbitconnect.Activities.UserListActivity
 import com.example.fitbitconnect.models.User
 import kotlinx.android.synthetic.main.activity_userlist.*
 import org.json.JSONObject
-import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.URL
 
 class FetchAllUsers(context: UserListActivity): FetchGetUrl<ArrayList<User>>(context) {
 
-    override fun doInBackground(vararg url: URL): ArrayList<User>  {
-        val httpURLConnection = createHttpURLConnection(url[0])
-
-        return parseBody(httpURLConnection)
-    }
 
     override fun onPostExecute(result: ArrayList<User>) {
         val activity: UserListActivity = activityReference.get() as UserListActivity
         if (activity != null) {
+            // Add the data to the recycler view
             val recyclerView = activity.recycler_view
-
             recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-
-
             val adapter = CustomAdapter(result)
-
             recyclerView.adapter = adapter
         }
     }
 
     /**
-     * Parses the JSON object into userObjects
+     * Handles the response from the server
      */
-    private fun parseBody(httpURLConnection: HttpURLConnection): ArrayList<User> {
-        var userList = ArrayList<User>()
+    override fun handleResponse(data: String): ArrayList<User> {
+        val dataArray = JSONObject(data).getJSONArray("userList")
+        val userList: ArrayList<User> = ArrayList()
 
-        try{
-            val data: String = httpURLConnection.inputStream.bufferedReader().use{ it.readText() }
-
-            // Get the main set of data
-
-            val dataArray = JSONObject(data).getJSONArray("userList")
-
-            for(i in 0 until dataArray.length()) {
-                val obj: JSONObject = dataArray.get(i) as JSONObject
-                // create the user object and add it to the arrayList
-                userList.add(createUserObject(obj))
-            }
-        }
-
-        catch (exception: Exception){
-            throw Exception("There was an error parsing the data: $exception")
-
-        }
-
-        finally {
-          httpURLConnection.disconnect()
-            Log.i("JSON", "Here")
+        for(i in 0 until dataArray.length()) {
+            val obj: JSONObject = dataArray.get(i) as JSONObject
+            // create the user object and add it to the arrayList
+            userList.add(createUserObject(obj))
         }
 
         return userList
     }
 
-    /**
-     * Creates a User object from the given user JSON object
-     */
+
+    // Creates a User object from the given user JSON object
     private fun createUserObject(obj: JSONObject): User {
         return User(obj.getString("username"), obj.getString("userID"))
     }
