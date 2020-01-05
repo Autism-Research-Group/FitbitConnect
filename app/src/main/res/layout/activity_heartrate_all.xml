@@ -4,9 +4,12 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_addData"/>
+        android:scrollbars="vertical"
+        android:padding="10dp"
+        android:layout_above="@+id/btn_addData" />
 
     <Button
         android:id="@+id/btn_addData"

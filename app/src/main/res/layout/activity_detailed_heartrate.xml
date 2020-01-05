@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textAlignment="center"
+            android:text="Username" />
+
+        <TextView
+            android:id="@+id/user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="UserID" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="18dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:text="12-30-19"
+            android:layout_marginBottom="7dp"/>
+
+        <TextView
+            android:id="@+id/ofr_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Out of Range" />
+
+        <TextView
+            android:id="@+id/ofr_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max" />
+
+        <TextView
+            android:id="@+id/ofr_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Min" />
+
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/fat_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Fat" />
+
+        <TextView
+            android:id="@+id/fat_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max" />
+
+        <TextView
+            android:id="@+id/fat_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Min" />
+
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/cardio_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Cardio" />
+
+        <TextView
+            android:id="@+id/cardio_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max" />
+
+        <TextView
+            android:id="@+id/cardio_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Min" />
+
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/peak_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Peak" />
+
+        <TextView
+            android:id="@+id/peak_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max" />
+
+        <TextView
+            android:id="@+id/peak_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Min" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

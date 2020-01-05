@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.UserListActivity"/>
+        <activity android:name=".Activities.AllHeartRateActivity"/>
+        <activity android:name=".Activities.DetailedHeartRateActivity"/>
     </application>
 
 </manifest>

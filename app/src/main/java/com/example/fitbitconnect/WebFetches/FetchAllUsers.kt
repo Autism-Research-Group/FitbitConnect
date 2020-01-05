@@ -1,9 +1,9 @@
-package com.example.fitbitconnect
+package com.example.fitbitconnect.WebFetches
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitbitconnect.Activities.UserListActivity
+import com.example.fitbitconnect.CustomAdapter
 import com.example.fitbitconnect.models.User
 import kotlinx.android.synthetic.main.activity_userlist.*
 import org.json.JSONObject
@@ -17,7 +17,8 @@ class FetchAllUsers(context: UserListActivity): FetchGetUrl<ArrayList<User>>(con
             // Add the data to the recycler view
             val recyclerView = activity.recycler_view
             recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            val adapter = CustomAdapter(result)
+            val adapter =
+                CustomAdapter(result)
             recyclerView.adapter = adapter
         }
     }

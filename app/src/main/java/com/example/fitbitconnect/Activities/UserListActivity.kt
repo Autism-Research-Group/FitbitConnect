@@ -2,7 +2,7 @@ package com.example.fitbitconnect.Activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fitbitconnect.FetchAllUsers
+import com.example.fitbitconnect.WebFetches.FetchAllUsers
 import com.example.fitbitconnect.R
 
 import java.net.URL

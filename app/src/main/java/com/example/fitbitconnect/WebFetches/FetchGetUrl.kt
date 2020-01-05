@@ -1,4 +1,4 @@
-package com.example.fitbitconnect
+package com.example.fitbitconnect.WebFetches
 
 import android.app.Activity
 import android.os.AsyncTask
