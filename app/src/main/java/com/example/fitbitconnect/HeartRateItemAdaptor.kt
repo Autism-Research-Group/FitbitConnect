@@ -41,6 +41,13 @@ class HeartRateItemAdaptor(val heartRateList: ArrayList<DayHeartRate>): Recycler
         return heartRateList.size
     }
 
+    /**
+     * Returns the DayHeartRate object at the index
+     */
+    fun getData(index: Int) : DayHeartRate {
+        return heartRateList.get(index)
+    }
+
 
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

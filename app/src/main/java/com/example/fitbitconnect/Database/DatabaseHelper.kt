@@ -10,13 +10,23 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context,
 ) {
 
     override fun onCreate(db: SQLiteDatabase) {
-       db.execSQL(UserContract.SQL_CREATE_USER_TABLE)
+        db.execSQL(UserContract.SQL_CREATE_USER_TABLE)
+        db.execSQL(HeartRateContract.SQL_CREATE_HEARTRATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // For now we will delete the db and start over but in future this must be changed
         // TODO: Store data for upgrade
         db.execSQL(UserContract.SQL_DELETE_USER_TABLE)
+        db.execSQL(HeartRateContract.SQL_DELETE_HEARTRATE_TABLE)
+        onCreate(db)
+    }
+
+
+    // Deletes the tables and then rebuilds them
+    fun rebuildDB(db: SQLiteDatabase) {
+        db.execSQL(UserContract.SQL_DELETE_USER_TABLE)
+        db.execSQL(HeartRateContract.SQL_DELETE_HEARTRATE_TABLE)
         onCreate(db)
     }
 
