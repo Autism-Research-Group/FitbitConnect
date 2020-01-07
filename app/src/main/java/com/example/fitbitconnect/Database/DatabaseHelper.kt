@@ -33,6 +33,6 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context,
 
     companion object {
         const val DATABASE_NAME = "Fitbit.db"
-        const val DATABASE_VERSION = 1 // If scheme is changed the version must be incremented
+        const val DATABASE_VERSION = 1 // NOTE: If scheme is changed the version must be incremented
     }
 }

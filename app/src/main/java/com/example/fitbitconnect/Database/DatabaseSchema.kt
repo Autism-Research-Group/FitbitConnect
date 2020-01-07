@@ -2,25 +2,39 @@ package com.example.fitbitconnect.Database
 
 import android.provider.BaseColumns
 
-
+/**
+ * The Table for a user: The table name is "user". The columns are:
+ *      - id: INTEGER PRIMARY KEY AUTO INCREMENTED
+ *      - username: TEXT NOT NULL
+ *      - user_id: TEXT NOT NULL
+ */
 object UserContract {
     object UserEntry: BaseColumns {
         const val TABLE_NAME = "user"
         const val COLUMN_NAME_USERNAME = "username"
-        const val COLUMN_USERID = "user_id"
+        const val COLUMN_USER_ID = "user_id"
     }
 
     const val SQL_CREATE_USER_TABLE =
         "CREATE TABLE ${UserEntry.TABLE_NAME} (" +
                 "${BaseColumns._ID} INTEGER PRIMARY KEY," +
                 "${UserEntry.COLUMN_NAME_USERNAME} TEXT NOT NULL," +
-                "${UserEntry.COLUMN_USERID} TEXT NOT NULL UNIQUE)"
+                "${UserEntry.COLUMN_USER_ID} TEXT NOT NULL UNIQUE)"
 
     const val SQL_DELETE_USER_TABLE =
         "DROP TABLE IF EXISTS ${UserEntry.TABLE_NAME}"
 }
 
 
+/**
+ * The Table for heart rate data. The table name is "heartrate". The columns are:
+ *      - id: INTEGER PRIMARY KEY AUTO INCREMENTED
+ *      - max: INTEGER
+ *      - min: INTEGER
+ *      - type: TEXT
+ *      - datetime: DATETIME NOT NULL
+ *      - fk_user_id INTEGER NOT NULL (FOREIGN KEY for a id in the User table)
+ */
 object HeartRateContract {
     object HeartRateEntry: BaseColumns {
         const val TABLE_NAME = "heartrate"

@@ -7,17 +7,13 @@ import android.os.Bundle
 import android.provider.BaseColumns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fitbitconnect.Database.*
 import com.example.fitbitconnect.HeartRateItemAdaptor
 import com.example.fitbitconnect.WebFetches.FetchAllHeartRates
 import com.example.fitbitconnect.R
-import com.example.fitbitconnect.models.DayHeartRate
-import com.example.fitbitconnect.models.HeartRate
-import com.example.fitbitconnect.models.User
+import com.example.fitbitconnect.models.*
 import kotlinx.android.synthetic.main.activity_heartrate_all.*
 import java.net.URL
-import kotlin.math.min
 
 class AllHeartRateActivity: AppCompatActivity() {
 
@@ -53,7 +49,11 @@ class AllHeartRateActivity: AppCompatActivity() {
         for( i in 0 until adaptor.itemCount) {
             val dataSet = adaptor.getData(i)
             // Create a user obj for the database
-            val newUser = DatabaseUser(-1, dataSet.username, dataSet.userID)
+            val newUser = DatabaseUser(
+                -1,
+                dataSet.username,
+                dataSet.userID
+            )
             // Get the fk_id of the new user from the currentUserList
             val fk_id = currentUserList.getIndex(newUser)
             handleDBInsert(newUser, fk_id, dataSet.heartRateList, dataSet.dateTime)
@@ -108,7 +108,7 @@ class AllHeartRateActivity: AppCompatActivity() {
     // Returns a mutable list of all the current users
     private fun getCurrentUsers(db: SQLiteDatabase): DatabaseUserList {
         val projection = arrayOf(BaseColumns._ID, UserContract.UserEntry.COLUMN_NAME_USERNAME,
-            UserContract.UserEntry.COLUMN_USERID)
+            UserContract.UserEntry.COLUMN_USER_ID)
 
         val cursor = db.query(
             UserContract.UserEntry.TABLE_NAME,
@@ -125,7 +125,7 @@ class AllHeartRateActivity: AppCompatActivity() {
                 val user = DatabaseUser(
                     getInt(getColumnIndex(BaseColumns._ID)),
                     getString(getColumnIndex(UserContract.UserEntry.COLUMN_NAME_USERNAME)),
-                    getString(getColumnIndex(UserContract.UserEntry.COLUMN_USERID))
+                    getString(getColumnIndex(UserContract.UserEntry.COLUMN_USER_ID))
                 )
 
                 // Since each usr is unique we don't have to worry about duplicates
@@ -140,7 +140,7 @@ class AllHeartRateActivity: AppCompatActivity() {
     private fun createUserDBValuesMap(username: String, userID: String): ContentValues{
         val values = ContentValues().apply {
             put(UserContract.UserEntry.COLUMN_NAME_USERNAME, username)
-            put(UserContract.UserEntry.COLUMN_USERID, userID)
+            put(UserContract.UserEntry.COLUMN_USER_ID, userID)
         }
         return values
     }
