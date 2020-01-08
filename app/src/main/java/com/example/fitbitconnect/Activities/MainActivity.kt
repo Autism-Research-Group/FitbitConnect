@@ -3,7 +3,6 @@ package com.example.fitbitconnect.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.fitbitconnect.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +24,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AllHeartRateActivity::class.java)
             startActivity(intent)
         }
+
+        // Add a user the the database
+         btn_addUser.setOnClickListener {
+             val intent = Intent(this, UserWebViewActivity::class.java)
+             startActivity(intent)
+         }
     }
-
-
 }

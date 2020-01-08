@@ -30,7 +30,8 @@ abstract class FetchGetUrl<E>(context: Activity): IFetchGet<E>, AsyncTask<URL, S
         try {
             // Get the response from the server as a string and call handleData on the response
             val data: String = httpURLConnection.inputStream.bufferedReader().use{ it.readText() }
-            returnedData = handleResponse(data)
+            val redirectUrl: String = httpURLConnection.getHeaderField("Location")
+            returnedData = handleResponse(data, redirectUrl)
         } catch (exception: Exception){
             throw Exception("There was an error parsing the data: $exception")
         } finally {
@@ -43,7 +44,7 @@ abstract class FetchGetUrl<E>(context: Activity): IFetchGet<E>, AsyncTask<URL, S
 
     // Determines if the responseCode is valid
     private fun isValidConnectionResponseCode(httpURLConnection: HttpURLConnection): Boolean {
-        return httpURLConnection.responseCode == 200
+        return httpURLConnection.responseCode == 200 || httpURLConnection.responseCode == 302
     }
 
 

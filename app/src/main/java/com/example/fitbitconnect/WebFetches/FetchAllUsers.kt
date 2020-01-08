@@ -7,6 +7,7 @@ import com.example.fitbitconnect.CustomAdapter
 import com.example.fitbitconnect.models.User
 import kotlinx.android.synthetic.main.activity_userlist.*
 import org.json.JSONObject
+import java.net.URL
 
 class FetchAllUsers(context: UserListActivity): FetchGetUrl<ArrayList<User>>(context) {
 
@@ -26,7 +27,7 @@ class FetchAllUsers(context: UserListActivity): FetchGetUrl<ArrayList<User>>(con
     /**
      * Handles the response from the server
      */
-    override fun handleResponse(data: String): ArrayList<User> {
+    override fun handleResponse(data: String, url: String): ArrayList<User> {
         val dataArray = JSONObject(data).getJSONArray("userList")
         val userList: ArrayList<User> = ArrayList()
 

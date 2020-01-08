@@ -3,19 +3,17 @@ package com.example.fitbitconnect.Activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitbitconnect.R
-import kotlinx.android.synthetic.main.activity_new_user.*
+import com.example.fitbitconnect.WebFetches.AddUser
+import java.net.URL
 
-class NewUserActivity: AppCompatActivity() {
+class UserWebViewActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_new_user)
+        setContentView(R.layout.activity_user_webwindow)
+        AddUser(this).execute(URL("http://10.0.2.2:3000/auth/authorize"))
 
-        btn_submit.setOnClickListener {
-            val text = editText_userID.text
-
-        }
 
     }
 }

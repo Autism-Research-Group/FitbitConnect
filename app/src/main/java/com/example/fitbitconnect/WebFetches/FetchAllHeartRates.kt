@@ -11,6 +11,7 @@ import com.example.fitbitconnect.models.HeartRate
 import kotlinx.android.synthetic.main.activity_heartrate_all.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.URL
 import kotlin.collections.ArrayList
 
 class FetchAllHeartRates(context: Activity): FetchGetUrl<ArrayList<DayHeartRate>>(context) {
@@ -25,7 +26,7 @@ class FetchAllHeartRates(context: Activity): FetchGetUrl<ArrayList<DayHeartRate>
         }
     }
 
-    override fun handleResponse(data: String): ArrayList<DayHeartRate> {
+    override fun handleResponse(data: String, url: String): ArrayList<DayHeartRate> {
         val heartRateList: ArrayList<DayHeartRate> = ArrayList()
 
         val dataArray = JSONArray(data)

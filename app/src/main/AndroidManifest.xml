@@ -21,6 +21,8 @@
         <activity android:name=".Activities.UserListActivity"/>
         <activity android:name=".Activities.AllHeartRateActivity"/>
         <activity android:name=".Activities.DetailedHeartRateActivity"/>
+        <activity android:name=".Activities.NewUserActivity"/>
+        <activity android:name=".Activities.UserWebViewActivity"/>
     </application>
 
 </manifest>
